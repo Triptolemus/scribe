@@ -1,0 +1,29 @@
+{
+  "name": "scribe",
+  "version": "1.0.0",
+  "description": "Transcribes audio files to text",
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "^4.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WMF",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Triptolemus/scribe.git"
+  },
+  "keywords": [
+    "scribe",
+    "transcription",
+    "text",
+    "audio"
+  ],
+  "bugs": {
+    "url": "https://github.com/Triptolemus/scribe/issues"
+  },
+  "homepage": "https://github.com/Triptolemus/scribe#readme"
+}
