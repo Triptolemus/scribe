@@ -1,2 +1,6 @@
 # list of files/directories to remove
 node_modules
+local/*
+!local/.gitkeep
+source/*
+!source/.gitkeep
