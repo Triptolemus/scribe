@@ -1,0 +1,25 @@
+{
+  "extends": "eslint-config-google",
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "linebreak-style": "off",
+    "space-before-function-paren": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "camelcase": "off",
+    "spaced-comment": ["error", "always", {"exceptions": ["*"]}],
+    "brace-style": ["error", "1tbs", {"allowSingleLine": true}]
+
+  }
+}
