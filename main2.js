@@ -22,7 +22,7 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = local.apikey;
 // The name of the audio file to transcribe
 const filename = './test.flac';
 
-return scribe.recognize_async(uri, 'FLAC', 'en-US')
+return scribe.recognize_async(uri, 'mp3', 'en-US')
   .then(function (transcription) {
     console.log(transcription);
     return mailer.send_email(
