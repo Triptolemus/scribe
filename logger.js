@@ -1,4 +1,4 @@
-t fs = require('fs');
+const fs = require('fs');
 const csv = require('csv');
 const os = require('os');
 
