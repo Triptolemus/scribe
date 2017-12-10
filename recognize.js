@@ -6,13 +6,13 @@ const fs = require('fs');
 const speech = require('@google-cloud/speech');
 
 module.exports = {
-  recognize_async: function (filename, encoding, langCode) {
+  recognize_async: function (filename, encoding, langCode, sampleHtz = 44140) {
   // Creates a client
   const client = new speech.SpeechClient();
 
   const config = {
     encoding: encoding,
-    // sampleRateHertz: sampleHtz,
+    sampleRateHertz: sampleHtz,
     languageCode: langCode // always 'en-US' ???
   };
 
