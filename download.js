@@ -4,24 +4,19 @@ const fs = require('fs');
 // import requests
 const request = require('request');
 
-let filename = './test.txt';
+module.exports = function (uri, filename) {
 
-module.exports = {
-  download (uri) {
-    console.log('download running');
-
-    // promise wrapper on request interface
-    let p = new Promise((resolve, reject) => {
-      console.log('sending request');
-      return request.get(uri)
-      .on('error', reject)
-      .pipe(fs.createWriteStream(filename)
-      .on('error', reject)
-      .on('close', function () {
-        console.log('write stream done');
-        return resolve(filename);
-      })
-    );
+  // promise wrapper on request interface
+  return new Promise((resolve, reject) => {
+    console.log('sending request');
+    return request.get(uri)
+    .on('error', reject)
+    .pipe(fs.createWriteStream(filename))
+    .on('error', reject)
+    .on('close', function () {
+      console.log('write stream done');
+      return resolve(filename);
+    });
   });
 
   p.then(function (fn) {
@@ -30,5 +25,4 @@ module.exports = {
     console.log('throwing error');
     throw e;
   });
-  }
 };
