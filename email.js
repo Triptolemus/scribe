@@ -21,7 +21,6 @@ module.exports = {
       to: to_address, // list of receivers
       subject: subject, // Subject line
       text: body, // plain text body
-      html: '<pre>' + body + '</pre>' // html body
     };
 
     // send mail with defined transport object

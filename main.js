@@ -70,15 +70,27 @@ return logger(log_filename, uri).then((job_id) => {
     upload(bucket, target)
   ]);
 }).then((results) => {
+  // get sampleHtz from recording channel
+  let job_id = results[0];
+  let filename = job_id + '.flac';
+  cmd = `ffprobe -v quiet -show_streams ${audio_dir}${filename} | grep sample_rate=`; 
+  return Promise.all([
+    job_id,
+    execute(cmd) 
+  ]);
+}).then((results) => {
   console.log('creating transcription jobs');
   // invoke google speech recognition api on stored file 
   let job_id = results[0];
   let filename = job_id + '.flac';
+  let sample_string = results[1].stdout;
+  let samplHtz = sample_string.substring(sample_string.search('=' + 1), sample_string.length)
+      .trim();
   let gs_uri = `gs://${bucket}/${filename}`;
 
   return Promise.all([
     job_id,
-    scribe.recognize_async(gs_uri, 'FLAC', 'en-US', 44100) // add samplHtz!!!
+    scribe.recognize_async(gs_uri, 'FLAC', 'en-US', samplHtz) // add samplHtz!!!
   ]);
 }).then((results) => {
   console.log('finished transcription jobs! Sending email...');
@@ -88,7 +100,7 @@ return logger(log_filename, uri).then((job_id) => {
   
   let transcription = response.results
     .map((result) => merge(result.alternatives[0].transcript, result.alternatives[1].transcript))
-    .join('\n');
+    .join(' ');
   console.log(`Transcription: ${transcription}`);
   
   let subject = '[Scribe Job #' + job_id + ']';
