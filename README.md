@@ -17,7 +17,7 @@ A Google Storage Bucket must be available and accessible to your project.
 
 The default configuration requires email credentials to transmit the transcription results, as well as a target email address to receive this transmission. This may not fit your needs, so adjust as desired.
 
-The following local configuration file must be added to local/local.js with the relevant configuration for your instance:
+The following local configuration file must be added to `local/local.js` with the relevant configuration for your instance:
 
 ```javascript
 module.exports = {
