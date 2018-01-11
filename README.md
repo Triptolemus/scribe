@@ -1,6 +1,10 @@
 # URL-Scribe
 
+# Description
 This module downloads an audio file, processes it to a single-channel flac stream, then uploads it, feeds it to the Google Speech API, then transmits the transcript to a configured email account.
+
+# Usage
+`node main.js http://your.favorite.podcast.com/episode1.mp3`
 
 ## Dependencies
 
@@ -28,9 +32,9 @@ module.exports = {
   email: some.email@example.com,
   pw: 'some-password',
   
-  project:, // name of your Google project with access to Speech and Storage apis
-  apikey:, // path to your Google apikey credentials
-  bucket:, // name of the Google storage bucket available for your project.
+  project: 'my-project-12345', // name of your Google project with access to Speech and Storage apis
+  apikey: '/home/user/project/scribe/local/credentials.json', // path to your Google apikey credentials
+  bucket: 'my-project-bucket', // name of the Google storage bucket available for your project.
   
   // The receipt address for your transcription
   to_addr: 'some.other.email@example.com',
