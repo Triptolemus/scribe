@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// local parameters
+// local configuration
 const local = require('./local/local.js');
 // mail function
 const mailer = require('./email.js');
@@ -29,8 +29,8 @@ let log_filename = 'local/log.csv';
 let uri = arg_parser();
 let ext = path.extname(uri);
 let audio_dir = './source/';
-let to_address = 'wallace.forman@gmail.com';
-let bucket = 'speech-primus-bucket';
+let to_address = local.to_addr
+let bucket = local.bucket
 
 // process.exit();
 
