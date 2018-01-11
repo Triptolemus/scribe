@@ -1,7 +1,7 @@
 # URL-Scribe
 
 ## Description
-This module downloads an audio file, processes it to a single-channel flac stream, then uploads it, feeds it to the Google Speech API, then transmits the transcript to a configured email account.
+This module downloads an audio file, processes it to a single-channel flac file, then uploads it, feeds it to the Google Speech API, and transmits the transcript received back to an email account designated in the configuration file.
 
 ## Usage
 `node main.js http://your.favorite.podcast.com/episode1.mp3`
