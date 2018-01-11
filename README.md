@@ -8,9 +8,9 @@ This module downloads an audio file, processes it to a single-channel flac strea
 
 ## Dependencies
 
-Google Speech API
-Google Storage Access and API
-The FFmpeg and FFprobe command line utilities
+* Google Speech API
+* Google Storage Access and API
+* The FFmpeg and FFprobe command line utilities
 
 ## Configuration
 You must obtain Google API credentials and add them to your project in order to use the Google Speech and Storage dependencies.
