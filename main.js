@@ -21,6 +21,8 @@ const range = require('./range.js');
 const upload = require('./upload.js');
 // module that merges two strings
 const merge = require('./merge.js');
+// module with local and google deletion utilities 
+const rm_file = require('./delete.js');
 
 // prepare variables
 let log_filename = 'local/log.csv';
@@ -105,11 +107,19 @@ return logger(log_filename, uri).then((job_id) => {
   
   let subject = '[Scribe Job #' + job_id + ']';
 
-  return mailer.send_email(
-    to_address,
-    subject,
-    transcription
-  );
+  return Promise.all([
+    // send email
+    mailer.send_email(
+      to_address,
+      subject,
+      transcription
+    ),
+    // clean up source files on local drive
+    rm_file.local(audio_dir + job_id + ext),
+    rm_file.local(audio_dir + job_id + '.flac'),
+    // clean up source files in google storage
+    rm_file.google(bucket, job_id + '.flac')
+  ]);
 }).catch((e) => {
   console.log(e);
   return mailer.send_email(
